@@ -14,6 +14,10 @@ end
 
 gem 'jquery-rails'
 
-group :test do
+group :test, :development do
   gem 'rspec-rails'
-end 
+end
+
+group :test do
+  gem 'factory_girl_rails'
+end
