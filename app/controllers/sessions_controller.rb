@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       redirect_to room_path(room)
     else
       flash[:error] = "Sorry, no room for that key!"
-      render :new
+      redirect_to "/session/new"
     end
   end
 end

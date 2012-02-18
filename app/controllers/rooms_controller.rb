@@ -2,7 +2,6 @@ class RoomsController < ApplicationController
   before_filter :require_password
   
   def show
-    @room = current_room
     # one way to do it: set variables for conference numbers and directory listings here
     # and pass it
     
