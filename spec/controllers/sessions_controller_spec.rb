@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe SessionsController do
-  render_views
-  
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
@@ -15,7 +13,6 @@ describe SessionsController do
     describe "with invalid roomkey" do
       before(:each) do
         @attributes = { :password => "invalid"}
-        room = mock_model Room, :id => 1, :name => "Badgers"
       end
       
       it "should re-render the new page" do
@@ -31,21 +28,19 @@ describe SessionsController do
     
     describe "with valid roomkey" do
       before(:each) do
-        @attributes = { :password => "valid"}
         @room = Factory(:room)
+        @password = @room.password
       end
       
       it "should assign the right room id to session[:room_id]" do
-        post :create, :password => @attributes[:password]
+        post :create, :password => @password
         session[:room_id].should == @room.id
       end
       
       it "should redirect to the room show page" do
-        post :create, :password => @attributes[:password]
+        post :create, :password => @password
         response.should redirect_to(room_path(@room))
       end
-      
     end
   end
-
 end
