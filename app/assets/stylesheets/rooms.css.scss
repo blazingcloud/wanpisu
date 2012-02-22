@@ -1,3 +1,31 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.room-list {
+    list-style: none;
+    padding: 0;
+}
+
+ul.room-list li {
+    border-bottom: 1px solid black;
+}
+
+ul.room-list a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 0;
+    text-decoration: none;
+    color: #525252;
+    display: block;
+}
+
+body {
+    margin: 0;
+    font-family: arial;
+}
+
+h1 {
+    padding-left: 10px;
+}
