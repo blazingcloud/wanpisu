@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def show
-    room = Room.find(params[:id])
+    room = Room.find_by_id(params[:id])    
     if room && session[:room_id] == room.id
       render '/rooms/' + room.name
     else
