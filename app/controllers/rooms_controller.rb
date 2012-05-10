@@ -1,7 +1,9 @@
 class RoomsController < ApplicationController
   def show
-    room = Room.find_by_id(params[:id])    
+    room = Room.find_by_id(params[:id])
+
     if room && session[:room_id] == room.id
+      @contacts = room.contacts
       render '/rooms/' + room.name
     else
       session[:room_id] = nil
