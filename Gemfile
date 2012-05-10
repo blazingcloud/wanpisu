@@ -2,6 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
+gem 'google_drive'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -15,10 +17,14 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'ruby-debug19'
+  gem 'pivotal_git_scripts'
 end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do

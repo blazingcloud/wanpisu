@@ -8,6 +8,15 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  c.hook_into :webmock # or :fakeweb
+  c.default_cassette_options = {
+    :record => :none
+  }
+end
+
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -29,4 +38,7 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+
+  config.filter_run :focus => true
+  config.extend VCR::RSpec::Macros
 end
