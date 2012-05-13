@@ -1,7 +1,8 @@
 <h1>Honeybadgers</h1>
 <ul class="room-list">
 <% @contacts.each do |contact| %>
-  <li><a href="tel:<%= contact[:phone] %>"><%= contact[:name] %>: <%= contact[:phone] %></a></li>
+  <li><a href="tel:<%= contact[:phone] %>"><%= contact[:name] %>: 
+    <%= contact[:phone][0..2] %>.<%= contact[:phone][3..5] %>.<%= contact[:phone][6..9] %></a></li>
 <% end %>
 </ul>
 

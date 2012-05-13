@@ -1,6 +1,5 @@
 class Room < ActiveRecord::Base
   def contacts
-    
     gdocsession = GoogleDrive.login(google_user, google_password)
     ws = gdocsession.spreadsheet_by_key(google_spreadsheet_key).worksheets[0]
     rows = ws.rows
@@ -11,7 +10,7 @@ class Room < ActiveRecord::Base
       headers.each_with_index do |header, i|
         contact_hash[header.to_sym] = row[i]
       end
-      contacts_list << contact_hash
+      contacts_list << contact_hash unless contact_hash[:name].empty? || contact_hash[:phone].empty?
     end
     contacts_list
   end
